@@ -1,0 +1,67 @@
+---
+---
+
+// ============================================================
+// minima 变量覆盖
+//
+// 关键：必须写在 @import "minima" 之前。
+// minima 的变量全都带 !default（先声明才生效），
+// 写在 import 后面等于没写。
+// ============================================================
+
+// 字体栈：在默认的英文字体后面插入中文字体，
+// 否则中文会掉到浏览器兜底的宋体上，又细又难看。
+$base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC",
+  Helvetica, Arial, sans-serif;
+
+// 中文行高要比英文大。minima 默认 1.5，中文读起来太挤。
+$base-line-height: 1.75;
+
+// 正文宽度。默认 800px，中文一行能排到 45 字以上，
+// 眼睛换行时容易串行。740px 大约 35 字一行。
+$content-width: 740px;
+
+// 正文颜色。默认 #111 接近纯黑，在浅色背景上偏刺眼，收一点。
+$text-color: #24292f;
+
+// 链接颜色，默认 #2a7ae2 是比较扎眼的亮蓝。
+// 想换配色就取消注释，挑一个跟正文对比够大的深色。
+// $brand-color: #0b6e99;
+
+@import "minima";
+
+// ============================================================
+// 纯 CSS 微调
+// 想加自己的样式，写在下面这一段就行。
+// $spacing-unit、$content-width 这些变量上面 import 之后可以直接用。
+// ============================================================
+
+// 段落之间留点气口，中文密排容易糊成一块
+.post-content p,
+.page-content p {
+  margin-bottom: 1.2em;
+}
+
+// 首页文章列表：每篇文章之间拉开一点距离
+.post-list > li {
+  margin-bottom: $spacing-unit * 0.8;
+}
+
+// 文章摘要压暗一点，让标题更突出。
+// 注意：minima 的 home 布局是把 excerpt 原样输出成 <p>，
+// 没有包 class，所以这里只能按位置选。
+.post-list li p {
+  color: #57606a;
+  font-size: 0.95em;
+}
+
+// 图片自适应，避免大图撑破布局
+.post-content img,
+.page-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5em auto;
+  border-radius: 6px;
+}

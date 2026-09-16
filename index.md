@@ -1,4 +1,13 @@
 ---
-title: Welcome to my blog!
+layout: home
+title: 你好，我是 clowly
+list_title: 最新文章
 ---
-你好。
+
+这里记录我的学习笔记和项目进展。
+
+<!--
+  说明：layout: home 是 minima 的首页布局，
+  它会先渲染下面这段文字，然后在后面自动列出所有文章。
+  之前这里是默认布局，首页只会显示一句「你好。」，文章列表出不来。
+-->

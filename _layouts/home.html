@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<!--
+  这个文件覆盖了 minima 主题自带的 _layouts/home.html。
+
+  为什么要覆盖：主题里的版本把两处文字写死成了英文
+  （"Posts" 和 "subscribe via RSS"），中文博客里露出来很违和。
+  其余逻辑跟主题原版完全一致，主题升级时这里不会跟着变，
+  所以如果哪天换了主题版本，记得回来对一下。
+-->
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- if site.posts.size > 0 -%}
+    <h2 class="post-list-heading">{{ page.list_title | default: "最新文章" }}</h2>
+    <ul class="post-list">
+      {%- for post in site.posts -%}
+      <li>
+        {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d" -%}
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        {%- if site.show_excerpts -%}
+          {{ post.excerpt }}
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+
+    <p class="rss-subscribe">订阅 <a href="{{ "/feed.xml" | relative_url }}">RSS</a></p>
+  {%- endif -%}
+
+</div>
